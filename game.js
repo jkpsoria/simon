@@ -10,7 +10,7 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
-$("body").keypress(function () {
+$("#level-title").click(function () {
     if (started == false) {
 
         $("h1").text("Level " + level);
@@ -18,6 +18,16 @@ $("body").keypress(function () {
         started = true;
     }
 });
+
+
+var media = matchMedia("(max-width:900px)");
+
+$(document).ready(function(){
+    if(media.matches){
+        $("h1").text("Tap here to start");
+    }
+})
+
 
 
 
@@ -65,8 +75,14 @@ function checkAnswer(currentLevel) {
 
         $("h1").text("Game Over!");
         setTimeout(function(){
-            $("h1").text("Press any key to start over.");
-        }, 5000);
+            if(media.matches){
+                $("h1").text("Tap here to start over.");
+            }
+            else{
+                $("h1").text("Click here to start over.");
+            }
+           
+        }, 2000);
 
         startOver()
     }
