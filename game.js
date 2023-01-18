@@ -12,7 +12,8 @@ var level = 0;
 
 $("#level-title").click(function () {
     if (started == false) {
-
+        var random = Math.floor(Math.random() * buttonColours.length)
+        $("h1").css("background-color", buttonColours[random]);
         $("h1").text("Level " + level);
         nextSequence();
         started = true;
